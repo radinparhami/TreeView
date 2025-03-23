@@ -132,5 +132,5 @@ class TreeView(ft.ListView):
 
     def __check_control(self, control: ft.Control) -> "TreeView":
         if not isinstance(control.data, TreeView):
-            raise ValueError("Control.data must be instance of TreeView")
+            raise ValueError("Control.data must be an instance of TreeView")
         return control.data
