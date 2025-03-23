@@ -1,14 +1,14 @@
 from typing import Dict, Union
-from flet import (
-    Control,
-    Column,
-    Row,
-    Container,
-    padding,
-    Checkbox,
-    ControlEvent,
-)
 
+from flet import (
+    Checkbox,
+    Column,
+    Container,
+    Control,
+    ControlEvent,
+    Row,
+    padding,
+)
 
 NestedControl = Dict[Control, Union["NestedControl", Control]]
 
