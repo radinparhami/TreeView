@@ -1,30 +1,24 @@
 import flet as ft
 
-from controls import TreeView
+from custom_controls import TreeView
 
 
 def main(page: ft.Page):
-    page.add(
-        TreeView(
-            {
-                ft.Checkbox("Security"): {
-                    ft.Checkbox("Firewall"): {
-                        ft.Checkbox("Local"): {},
-                        ft.Checkbox("Public"): {},
-                    },
-                    ft.Checkbox(label="Password Manager"): {},
-                    ft.Checkbox("Antivirus"): {},
-                },
-                ft.Checkbox("Dev", value=True): {
-                    ft.Checkbox(
-                        label="Show logs", on_change=lambda _: print("This is a test!")
-                    ): {},
-                    ft.Checkbox("Take Snapshot", value=True): {},
-                },
-            },
-            set_on_change=True,
-        )
-    )
+    page.title = "TreeView"
+
+    root = TreeView(auto_collapse=True)
+    root.append(ft.Checkbox("1"))
+    segment_2 = root.append(ft.Checkbox("2", value=True))
+    root.append(ft.Checkbox("3"))
+
+    segment_2_1 = segment_2.append(ft.Checkbox("2.1", value=True))
+    segment_2.append(ft.Checkbox("2.2"))
+
+    segment_2_1.append(ft.Text("2.1.1(This is text!)", weight=ft.FontWeight.BOLD))
+    segment_2_1.append(ft.Checkbox("2.1.2"))
+    segment_2_1.append(ft.Text("2.1.3(This is text!)", weight=ft.FontWeight.BOLD))
+
+    page.add(root)
 
 
 ft.app(target=main)
